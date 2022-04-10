@@ -77,6 +77,18 @@ c.vertsplit = "#f0f0f0"
 ---@diagnostic disable: undefined-global
 local theme = lush(function()
   return {
+    -- The following are all the Neovim default highlight groups from the docs
+    -- as of 0.5.0-nightly-446, to aid your theme creation. Your themes should
+    -- probably style all of these at a bare minimum.
+    --
+    -- Referenced/linked groups must come before being referenced/lined,
+    -- so the order shown ((mostly) alphabetical) is likely
+    -- not the order you will end up with.
+    --
+    -- You can uncomment these and leave them empty to disable any
+    -- styling for that group (meaning they mostly get styled as Normal)
+    -- or leave them commented to apply vims default colouring or linking.
+
     Comment({ fg = c.comment_fg, gui = "italic" }), -- any comment
     ColorColumn({ bg = c.color_col }), -- used for the columns set with 'colorcolumn'
     Conceal({ fg = c.fg }), -- placeholder characters substituted for concealed text (see 'conceallevel')
@@ -87,29 +99,40 @@ local theme = lush(function()
     CursorLine({ bg = c.cursor_line }), -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory({ fg = c.blue }), -- directory names (and other special names in listings)
     DiffAdd({ fg = c.green }), -- diff mode: Added line |diff.txt|
-    DiffChange({ fg = c.yellow }), -- diff mode: Changed line |diff.txt|
+    DiffChange({ fg = c.blue }), -- diff mode: Changed line |diff.txt|
     DiffDelete({ fg = c.red }), -- diff mode: Deleted line |diff.txt|
-    DiffText({ fg = c.blue }), -- diff mode: Changed text within a changed line |diff.txt|
+    DiffText({ fg = c.yellow }), -- diff mode: Changed text within a changed line |diff.txt|
+    -- fugitive colors
+    diffAdded({ fg = c.green }), -- diff mode: Added line
+    diffChanged({ fg = c.blue }), -- diff mode: Changed line
+    diffRemoved({ fg = c.red }), -- diff mode: Removed line
+    diffFile({ fg = c.yellow }), -- diff mode: Name of the file
+    diffLine({ bg = c.purple, fg = c.white }), -- diff mode: Changed lines
+    diffSubname({ fg = c.black }), -- diff mode: First unchanged line
+    gitcommitSelectedType({ fg = c.green }), -- commit mode: Selected types of changes to be committed
+    gitcommitSelectedFile({ fg = c.green }), -- commit mode: Selected files to be committed
+    gitcommitDiscardedType({ fg = c.red }), -- commit mode: Omitted types of changes
+    gitcommitDiscardedFile({ fg = c.red }), -- commit mode: Omitted files
     -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
     ErrorMsg({ fg = c.fg }), -- error messages on the command line
-    VertSplit({ fg = c.comment_fg, bg = c.vertsplit }), -- the column separating vertically split windows
+    VertSplit({ fg = c.vertsplit, bg = c.vertsplit }), -- the column separating vertically split windows
     Folded({ fg = c.fg }), -- line used for closed folds
     FoldColumn({ fg = c.fg }), -- 'foldcolumn'
     SignColumn({ fg = c.fg }), -- column where |signs| are displayed
-    IncSearch({ fg = c.bg, bg = c.cyan }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch({ fg = c.bg, bg = c.yellow }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute   { }, -- |:substitute| replacement text highlighting
     LineNr({ fg = c.gutter_fg, bg = c.gutter_bg }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr({ fg = c.fg }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    MatchParen({ fg = c.cyan, bg = c.selection }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen({ fg = c.blue, gui = "underline" }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg({ fg = c.fg }), -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg({ fg = c.fg }), -- |more-prompt|
     NonText({ fg = c.non_text }), -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal({ fg = c.fg, bg = c.bg }), -- normal text
-    NormalFloat  { fg = c.fg, bg = c.white }, -- Normal text in floating windows.
+    -- NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
     Pmenu({ fg = c.fg, bg = c.cursor_line }), -- Popup menu: normal item.
     PmenuSel({ fg = c.bg, bg = c.blue }), -- Popup menu: selected item.
