@@ -121,7 +121,7 @@ local theme = lush(function()
     Folded({ fg = c.fg }), -- line used for closed folds
     FoldColumn({ fg = c.fg }), -- 'foldcolumn'
     SignColumn({ fg = c.fg }), -- column where |signs| are displayed
-    IncSearch({ fg = c.bg, bg = c.yellow }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch({ fg = c.fg, bg = c.yellow }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute   { }, -- |:substitute| replacement text highlighting
     LineNr({ fg = c.gutter_fg, bg = c.gutter_bg }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr({ fg = c.fg }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
@@ -133,13 +133,14 @@ local theme = lush(function()
     NonText({ fg = c.non_text }), -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal({ fg = c.fg, bg = c.bg }), -- normal text
     -- NormalFloat  { }, -- Normal text in floating windows.
+    FloatBorder({ fg = c.fg, bg = c.bg }), -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    Pmenu({ fg = c.fg, bg = c.cursor_line }), -- Popup menu: normal item.
+    Pmenu({ fg = c.fg, bg = c.bg }), -- Popup menu: normal item.
     PmenuSel({ fg = c.bg, bg = c.blue }), -- Popup menu: selected item.
     PmenuSbar({ bg = c.cursor_line }), -- Popup menu: scrollbar.
     PmenuThumb({ bg = c.comment_fg }), -- Popup menu: Thumb of the scrollbar.
     Question({ fg = c.purple }), -- |hit-enter| prompt and yes/no questions
-    -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    QuickFixLine({ fg = c.fg, bg = c.selection }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search({ fg = c.bg, bg = c.yellow }), -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SpecialKey({ fg = c.fg }), -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad({ fg = c.red, gui = "undercurl" }), -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
