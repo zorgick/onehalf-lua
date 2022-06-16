@@ -282,7 +282,7 @@ local theme = lush(function()
     TSProperty({ fg = c.fg }), -- Same as `TSField`.
     -- TSPunctDelimiter     { } , -- Punctuation delimiters: Periods, commas, semicolons, etc.
     -- TSPunctBracket       { } , -- Brackets, braces, parentheses, etc.
-    -- TSPunctSpecial       { } , -- Special punctuation that doesn't fit into the previous categories.
+    TSPunctSpecial({ fg = c.yellow }), -- Special punctuation that doesn't fit into the previous categories.
     -- TSRepeat             { } , -- Keywords related to loops: `for`, `while`, etc.
     -- TSString             { } , -- String literals.
     -- TSStringRegex        { } , -- Regular expression literals.
