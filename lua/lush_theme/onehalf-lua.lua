@@ -309,7 +309,7 @@ local theme = lush(function()
     -- TSDanger             { } , -- Text representation of a danger note.
     -- TSType               { } , -- Type (and class) definitions and annotations.
     -- TSTypeBuiltin        { } , -- Built-in types: `i32` in Rust.
-    TSVariable({ fg = c.fg }), -- Variable names that don't fit into other categories.
+    javascriptTSVariable({ fg = c.fg }), -- Variable names that don't fit into other categories.
     TSVariableBuiltin({ fg = c.cyan, gui = "italic" }), -- Variable names defined by the language: `this` or `self` in Javascript.
 
     -- lukas-reineke/indent-blankline.nvim
