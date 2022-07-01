@@ -314,6 +314,7 @@ local theme = lush(function()
 
     -- lukas-reineke/indent-blankline.nvim
     IndentBlanklineContextChar({ fg = c.purple, gui = "nocombine" }), -- Highlight of indent character when base of current context.
+    netrwMarkFile({ fg = c.bg, bg = c.blue }), -- Netrw marked item
   }
 end)
 
